@@ -1,0 +1,14 @@
+projects:
+  - name : Demo Project
+    services:
+    - name: Demo Service 1
+      path: ~/Documents/code/docker-network-test
+      build-command: docker-compose -f docker-compose1.yml build
+      run-command: docker-compose -f docker-compose1.yml up -d
+      source: 
+    - name: Demo Service 2
+      path: ~/Documents/code/docker-network-test
+      build-command: docker-compose -f docker-compose2.yml build
+      run-command: docker-compose -f docker-compose2.yml up -d
+      source: 
+
