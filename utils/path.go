@@ -14,3 +14,10 @@ func ExpandPath(path string) string {
 	}
 	return path
 }
+
+func GetFullPath(projectPath string, servicePath string) string {
+	if projectPath != "" {
+		return ExpandPath(filepath.Join(projectPath, servicePath))
+	}
+	return ExpandPath(servicePath)
+}

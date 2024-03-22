@@ -1,14 +1,15 @@
 projects:
-  - name : Demo Project
+  - name : DemoProject
+    path: ~/Documents/code/demo-project
     services:
     - name: Demo Service 1
-      path: ~/Documents/code/docker-network-test
-      build-command: docker-compose -f docker-compose1.yml build
-      run-command: docker-compose -f docker-compose1.yml up -d
-      source: 
+      path: herder1
+      build-command: make build
+      run-command: ./herder help
+      source: https://github.com/scottbarnesg/herder.git
     - name: Demo Service 2
-      path: ~/Documents/code/docker-network-test
-      build-command: docker-compose -f docker-compose2.yml build
-      run-command: docker-compose -f docker-compose2.yml up -d
-      source: 
+      path: herder2
+      build-command: make build
+      run-command: ./herder help
+      source: https://github.com/scottbarnesg/herder.git
 

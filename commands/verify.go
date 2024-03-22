@@ -4,23 +4,26 @@ import (
 	"fmt"
 	"herder/config"
 	"herder/utils"
+	"log"
 	"os"
 )
 
-func VerifyServices(projectName string, config *config.Config) (bool, error) {
+func VerifyServices(projectName string, config *config.Config) error {
 	project, err := config.GetProject(projectName)
 	if err != nil {
-		panic(err)
+		return err
 	}
 	for _, service := range project.Services {
-		if !exists(utils.ExpandPath(service.Path)) {
-			return false, fmt.Errorf("path for service %s in project %s does not exist: %s", service.Name, projectName, service.Path)
+		log.Printf("Verifying service %s...\n", service.Name)
+		if !PathExists(utils.GetFullPath(project.Path, service.Path)) {
+			return fmt.Errorf("path for service %s in project %s does not exist: %s", service.Name, projectName, service.Path)
 		}
 	}
-	return true, nil
+	log.Println("OK")
+	return nil
 }
 
-func exists(path string) bool {
+func PathExists(path string) bool {
 	_, err := os.Stat(path)
 	return !os.IsNotExist(err)
 }
