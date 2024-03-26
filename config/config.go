@@ -12,6 +12,7 @@ type Service struct {
 	Path         string `yaml:"path"`
 	BuildCommand string `yaml:"build-command"`
 	RunCommand   string `yaml:"run-command"`
+	StopCommand  string `yaml:"stop-command"`
 	Source       string `yaml:"source"`
 }
 

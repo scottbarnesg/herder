@@ -89,6 +89,11 @@ func performActions(args *utils.ParsedArgs, config *config.Config) error {
 			if err != nil {
 				return err
 			}
+		} else if action == stopCommand {
+			err := commands.StopProject(args, config)
+			if err != nil {
+				return err
+			}
 		} else {
 			return fmt.Errorf("action %s has not been implemented yet", action)
 		}

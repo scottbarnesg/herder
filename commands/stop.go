@@ -7,21 +7,21 @@ import (
 	"slices"
 )
 
-func StartProject(args *utils.ParsedArgs, config *config.Config) error {
+func StopProject(args *utils.ParsedArgs, config *config.Config) error {
 	project, err := config.GetProject(args.Project)
 	if err != nil {
 		panic(err)
 	}
-	log.Printf("Starting services for project %s...\n", args.Project)
+	log.Printf("Stopping services for project %s...\n", args.Project)
 	for i, service := range project.Services {
 		if slices.Contains(args.Exclude, service.Name) {
 			log.Printf("\t%d. Service %s in -exclude list, skipping...", i+1, service.Name)
 		} else {
 			workDir := utils.GetFullPath(project.Path, service.Path)
-			log.Printf("\t%d. Starting service %s...\n", i+1, service.Name)
-			log.Printf("\t\tCommand: %s\n", service.RunCommand)
+			log.Printf("\t%d. Stopping service %s...\n", i+1, service.Name)
+			log.Printf("\t\tCommand: %s\n", service.StopCommand)
 			log.Printf("\t\tDirectory: %s\n", workDir)
-			out, err := utils.RunCommand(workDir, service.RunCommand)
+			out, err := utils.RunCommand(workDir, service.StopCommand)
 			if err != nil {
 				return err
 			}
