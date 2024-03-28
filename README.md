@@ -31,3 +31,24 @@ For example, if you wanted to build and start all services in project `foo`, exc
 ```
 herder foo build run -exclude bar
 ```
+
+## Configuration
+
+Herder reads is configuration from `~/.herder/config.yml`. Below is an example configuration file:
+
+```yaml
+projects:
+  - name : DemoProject
+    path: ~/Documents/code/demo-project
+    services:
+    - name: Demo Service 1
+      path: herder1
+      build-command: make build
+      run-command: ./herder help
+      source: https://github.com/scottbarnesg/herder.git
+    - name: Demo Service 2
+      path: herder2
+      build-command: make build
+      run-command: ./herder help
+      source: https://github.com/scottbarnesg/herder.git
+```
