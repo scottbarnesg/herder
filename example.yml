@@ -1,6 +1,6 @@
 projects:
   - name : DemoProject
-    path: ~/Documents/code/demo-project
+    path: ${DEMO_PROJECT_PATH}
     services:
     - name: Demo Service 1
       path: herder1

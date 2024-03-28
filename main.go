@@ -5,7 +5,6 @@ import (
 	"herder/commands"
 	"herder/config"
 	"herder/utils"
-	"log"
 	"os"
 	"slices"
 	"strings"
@@ -108,7 +107,6 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	log.Printf("%+v\n", parsed)
 	// Read config
 	configFilePath := utils.ExpandPath("~/.herder/config.yml")
 	config := config.ReadConfig(configFilePath)

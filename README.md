@@ -52,3 +52,12 @@ projects:
       run-command: ./herder help
       source: https://github.com/scottbarnesg/herder.git
 ```
+
+Note: The path to a project or service can be set via env var (see below). This is not supported for other values.
+
+```yaml
+projects:
+  - name : DemoProject
+    path: ${DEMO_PROJECT_PATH}
+    ...
+```
