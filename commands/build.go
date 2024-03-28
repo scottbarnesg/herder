@@ -16,6 +16,8 @@ func BuildProject(args *utils.ParsedArgs, config *config.Config) error {
 	for i, service := range project.Services {
 		if slices.Contains(args.Exclude, service.Name) {
 			log.Printf("\t%d. Service %s in -exclude list, skipping...", i+1, service.Name)
+		} else if service.BuildCommand == "" {
+			log.Printf("\t%d. Service %s has no build command, skipping...", i+1, service.Name)
 		} else {
 			workDir := utils.GetFullPath(project.Path, service.Path)
 			log.Printf("\t%d. Building service %s...\n", i+1, service.Name)
