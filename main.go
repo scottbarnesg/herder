@@ -88,6 +88,11 @@ func performActions(args *utils.ParsedArgs, config *config.Config) error {
 			if err != nil {
 				return err
 			}
+		} else if action == pullCommand {
+			err := commands.PullReposForProject(args, config)
+			if err != nil {
+				return err
+			}
 		} else if action == stopCommand {
 			err := commands.StopProject(args, config)
 			if err != nil {
